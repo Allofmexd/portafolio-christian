@@ -2,6 +2,9 @@
 
 Landing personal de una página. HTML5, CSS3 y JavaScript Vanilla, sin frameworks, dependencias npm, backend o pasos de compilación. Proyecto independiente de Bitácora Stack y MechSync.
 
+Sitio público: [Portafolio de Christian](https://allofmexd.github.io/portafolio-christian/).
+Repositorio: [Allofmexd/portafolio-christian](https://github.com/Allofmexd/portafolio-christian).
+
 ## Vista local
 
 Desde esta carpeta, con Python instalado:
@@ -37,17 +40,24 @@ Los dos proyectos están en HTML para que permanezcan legibles sin JavaScript. P
 
 Montserrat se aloja localmente (subset latino variable, 37,956 bytes, licencia SIL OFL incluida). La página no solicita Google Fonts ni analítica. Ver fuentes y decisiones en [DESIGN_NOTES](docs/DESIGN_NOTES.md).
 
-## Publicar posteriormente en GitHub Pages
+## Publicación en GitHub Pages
 
-El repositorio Git local tiene rama `main`. No tiene remote y no se ha publicado. Cuando se autorice:
+Repositorio público independiente con rama `main` y remote `origin` en https://github.com/Allofmexd/portafolio-christian.git.
 
-1. Crear un repositorio GitHub independiente con el nombre definitivo elegido por el usuario.
-2. Añadir la URL real como `origin` y hacer push de `main` desde esta carpeta.
-3. En Settings → Pages, elegir Deploy from a branch → `main` → `/ (root)`.
-4. Esperar el despliegue y obtener la URL definitiva de GitHub Pages.
-5. Añadir entonces `link rel="canonical"` y `meta property="og:url"` absolutos en `index.html`, con la URL pública real. Opcionalmente preparar una imagen OG propia y su URL absoluta.
-6. Volver a comprobar navegación, recursos, metadatos y responsive contra la URL publicada.
+Configuración: Settings → Pages → Build and deployment → **Deploy from a branch** → **main** → **/ (root)**. La raíz contiene index.html y .nojekyll; no hay framework, npm, compilación ni workflow personalizado. GitHub administra el despliegue estándar de Pages.
 
-Referencia: [configurar la fuente de publicación de GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
+Para publicar actualizaciones autorizadas desde esta carpeta:
 
-Los assets emplean rutas relativas y no necesitan cambiarse para un prefijo de repositorio. No se inventa una dirección pública, no se instala integración de hosting y no se automatiza un push sin autorización posterior.
+```powershell
+git add ARCHIVOS_MODIFICADOS
+git commit -m "Descripción concreta del cambio"
+git push origin main
+```
+
+Esperar que Pages termine y comprobar la URL pública. Canonical y og:url apuntan a https://allofmexd.github.io/portafolio-christian/. No se añade og:image: la única captura existente muestra otro proyecto y no es una portada social del portafolio. Una imagen social propia puede incorporarse posteriormente.
+
+Los assets emplean rutas relativas compatibles con el prefijo /portafolio-christian/.
+
+- [Decisiones de diseño y evidencia](docs/DESIGN_NOTES.md).
+- [Pruebas locales y de producción](docs/QA.md).
+- [Configurar la fuente de publicación de GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
