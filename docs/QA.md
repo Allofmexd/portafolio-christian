@@ -25,6 +25,34 @@ Fecha: 12 de octubre de 2026 (America/Mexico_City). Windows, Edge Chromium headl
 
 La revisión automatizada más la inspección manual no equivalen a certificación WCAG completa. No se ejecutó un validador HTML normativo ni una auditoría con lector de pantalla. No se mide rendimiento de producción antes de existir un despliegue real.
 
-## Publicación futura
+## Verificación de producción — 12 de octubre de 2026
 
-Faltan el repositorio remoto autorizado y la URL pública definitiva. Canonical/og:url se añaden entonces. Repetir navegación, recursos y revisión responsive en producción; el sitio actual ya está terminado y probado localmente. No requiere build ni npm.
+Sitio: https://allofmexd.github.io/portafolio-christian/.
+Repositorio público: https://github.com/Allofmexd/portafolio-christian.
+
+Se comprobó autenticación Allofmexd, repositorio inicialmente inexistente y working tree limpio en main antes de crearlo. Se revisaron los 14 archivos versionados y patrones habituales de credenciales: no se encontraron archivos privados ni secretos. Se conservó Montserrat y su licencia. Se volvieron a ejecutar las pruebas locales y `node --check assets/js/main.js` antes de publicar.
+
+GitHub Pages configurado mediante CLI/API: build_type legacy (Deploy from a branch), rama main y carpeta /. HTTPS habilitado. El despliegue estándar administrado por GitHub terminó con success/built para `9a6a91c37b99b68f42a46c3350292ab21091777c` (run 38249283196). No existe workflow personalizado, framework ni paso de compilación del sitio.
+
+| Prueba pública | Resultado |
+|---|---|
+| Homepage | HTTP 200; HTML público idéntico a index.html local de la revisión medida. |
+| Recursos | Dos CSS, JS, WOFF2 Montserrat, sprite SVG, favicon SVG y WebP con HTTP 200. |
+| Prefijo | Las ocho peticiones observadas en navegador corresponden al mismo host y permanecen bajo /portafolio-christian/. |
+| Fuente | FontFace Montserrat en estado loaded; no se usa una petición externa de fuentes. |
+| Responsive | 320, 375, 768, 1024, 1440 y 1920 px sin overflow global; capturas completas generadas. Inspección visual de escritorio coherente con la versión local. |
+| Navegación | Cinco anchors, menú móvil, Escape, retorno de foco, selección de sección y cambios de breakpoint correctos. |
+| Accesibilidad | Skip link y foco correctos; axe-core con los mismos tags A/AA de la prueba local: cero violaciones a 1440 px y a 375 px con menú abierto. |
+| Sin JavaScript | 320 y 1440 px: navegación expandida, contenido legible y anchor de proyectos funcional. |
+| Movimiento reducido | Scroll suave y animación de entrada desactivados. |
+| Consola | Cero errores de aplicación JS, cero mensajes console.error y cero recursos HTTP >= 400. |
+| Enlaces externos | Perfil GitHub, repositorio Bitácora Stack, sitio Bitácora Stack y los tres repositorios MechSync responden HTTP 200. |
+| Metadatos | Canonical y og:url coinciden con la URL pública; title, description, author, og:title/description/type y lang es-MX conservados. |
+
+La prueba de carga diferida espera que la imagen complete su descarga después de hacer scroll; no confunde la espera de red con un recurso roto. No se añadió og:image porque la captura existente representa Bitácora Stack, no una portada del portafolio. No se crearon sitemap, robots, formularios ni nuevas secciones.
+
+Los informes axe y capturas públicos se guardaron fuera del repositorio en la carpeta temporal `portfolio-production`. Las pruebas no equivalen a certificación WCAG completa ni medición de Core Web Vitals. No se encontraron problemas pendientes que bloqueen la entrega.
+
+## Mejoras futuras opcionales
+
+Imagen social propia, fotografía personal real y otros medios de contacto solo cuando el usuario los confirme. Las notas de publicación pendiente de DESIGN_NOTES describen el estado anterior a esta fase; este registro y README documentan la publicación realizada.
